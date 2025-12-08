@@ -1,0 +1,47 @@
+header:
+  version: 14
+
+machine: qemuriscv64
+distro: poky
+target: core-image-minimal
+
+repos:
+
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    branch: master
+    layers:
+      bitbake: disabled
+
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    branch: master
+    layers:
+      meta:
+
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    branch: master
+    layers:
+      meta-poky:
+
+  meta-openembedded:
+    url: https://git.openembedded.org/meta-openembedded
+    branch: master
+    layers:
+      meta-oe:
+
+  meta-riscv:
+    url: https://github.com/riscv/meta-riscv.git
+    branch: master
+
+  meta-advent:
+    path: ..
+    layers:
+      .:
+
+local_conf_header:
+  qemuriscv64: |
+    EXTRA_IMAGE_FEATURES = "empty-root-password allow-empty-password allow-root-login"
+    KERNEL_DANGLING_FEATURES_WARN_ONLY = "1"
+    IMAGE_INSTALL:append = " helloworld"

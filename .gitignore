@@ -1,0 +1,6 @@
+bitbake/
+build/
+meta-openembedded/
+meta-riscv/
+meta-yocto/
+openembedded-core/
